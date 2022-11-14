@@ -1,23 +1,24 @@
 <template>
-   <div @click="fontchange">
+   <div>
     <ul>
-    <li class="box">
-        <span class="font" style="font-weight:bold;margin-top:20px;margin-left:10px">接入数据源</span>
+    <li class="box" @click="fontchange(index)" v-for="(item,index) in scriptList">
+        <span class="font" style="font-weight:bold;margin-top:20px;margin-left:10px">{{scriptList[index].title}}</span>
      <ul style="overflow:hidden;margin-left:-5px;margin-top:20px">
-        <li class="left">
+        <li class="left" v-for="(item,index2) in innercard">
             <div style="text-align:center" class="icon"> <OfficeBuilding style="width: 1em; height: 1em;" /></div>
-            <div style="font-weight:bold;font-size:32px;text-align:center" class="font">40</div>
+            <div style="font-weight:bold;font-size:32px;text-align:center" class="font">{{innercard[index2].num}}</div>
+            <div class="font" style="margin-left:45px;margin-top:15px">{{innercard[index2].info}}</div>
         </li>
-        <li class="right">
+        <!-- <li class="right">
             <div style="text-align:center" class="icon"><Document style="width: 1em; height: 1em;" /></div>
             <div style="font-weight:bold;font-size:32px;text-align:center" class="font">516</div>
-        </li>
+        </li> -->
      </ul>
      <div>
-      <ul>
+      <!-- <ul>
         <li style="float:left;margin-left:45px;margin-top:20px" class="font">接入系统数</li>
         <li style="float:right;margin-right:75px;;margin-top:20px" class="font">接入表数量</li>
-     </ul>
+     </ul> -->
      </div>
     </li>
     </ul>
@@ -25,22 +26,57 @@
 </template>
 <script>
 import IconDocumentation from './icons/IconDocumentation.vue';
+import { ref, onMounted } from 'vue'
 export default {
   components: { IconDocumentation },
+    data(){
+        return{
+         scriptList:[
+            {
+            title:'接入数据源',
+         },
+         {
+            title:'数据资产',
+         },{
+            title:'数据应用',
+
+         }
+         ],
+         innercard:[
+            {
+                icon:'',
+                info:'接入系统数',
+                num:'40',
+                bottem:'',
+            },
+            {
+                icon:'',
+                info:'接入表数量',
+                num:516,
+                bottem:'',
+            },
+            
+         ]
+        }
+    },
+     onMounted:function(){
+            this.$options.methods.fontchange()
+        },
     methods:{
-        fontchange:function(){
-                var box =document.getElementsByClassName('box')[0];
-                 box.classList.toggle('boxchange')
-                 var icon = document.getElementsByClassName('icon')
-                  for(let i=0;i<2;i++){
+        fontchange:function(index){
+                console.log(index);
+                var box =document.getElementsByClassName('box')[index];
+                     box.classList.toggle('boxchange')
+                 var icon = document.getElementsByClassName('box')[index].getElementsByClassName('icon')
+                  for(let i=0;i<icon.length;i++){
                     icon[i].classList.toggle('iconchange')
                   }
-                   var sideBar = document.getElementsByClassName('font');
-                  for(let i=0;i<5;i++){
+                   var sideBar = document.getElementsByClassName('box')[index].getElementsByClassName('font');
+                  for(let i=0;i<sideBar.length;i++){
                     sideBar[i].classList.toggle('fontchange')
                   }
                 },
-    }
+        }
 }
 </script>
 <style scoped>
@@ -51,14 +87,16 @@ export default {
     box-shadow: 0px 2px 3px rgb(21, 14, 14);
 }
  .boxchange{
-    background-color: rgb(81, 51, 251);
+    background-color:#4385e5;
 
 }
 .left{
     width: 165px;
     height: 70px;
     display: inline-block;
-    border-right: 1px rgb(131, 120, 120) solid;
+}
+.left:first-of-type{
+       border-right: 1px solid #333437;
 }
 .right{
     width: 165px;
