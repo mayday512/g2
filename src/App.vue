@@ -5,7 +5,8 @@
 
     <!-- <div class="wrapper"> -->
       <HelloWorld/>
-
+      <br/>
+      <muscle/>
       <!-- <nav> -->
         <!-- <RouterLink to="/">Home</RouterLink> -->
         <!-- <RouterLink to="/about">About</RouterLink> -->
@@ -18,6 +19,7 @@
 <script setup>
 //import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/line-Chart.vue'
+import muscle from './components/muscle.vue'
 </script>
 
 <style scoped>
