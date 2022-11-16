@@ -1,7 +1,7 @@
 <template>
    <div>
-    <ul>
-    <li class="box" @click="fontchange(index)" v-for="(item,index) in scriptList">
+    <ul class="menu">
+    <li class="box" @click="fontchange(index)" v-for="(item,index) in scriptList" style="margin-right: 5px;">
         <span class="font" style="font-weight:bold;margin-top:20px;margin-left:10px">{{scriptList[index].title}}</span>
      <ul style="overflow:hidden;margin-left:-5px;margin-top:20px">
         <li class="left" v-for="(item,index2) in innercard">
@@ -64,17 +64,48 @@ export default {
         },
     methods:{
         fontchange:function(index){
-                console.log(index);
-                var box =document.getElementsByClassName('box')[index];
-                     box.classList.toggle('boxchange')
-                 var icon = document.getElementsByClassName('box')[index].getElementsByClassName('icon')
-                  for(let i=0;i<icon.length;i++){
-                    icon[i].classList.toggle('iconchange')
-                  }
-                   var sideBar = document.getElementsByClassName('box')[index].getElementsByClassName('font');
-                  for(let i=0;i<sideBar.length;i++){
-                    sideBar[i].classList.toggle('fontchange')
-                  }
+            var icon=[];
+            var font =[];
+            var li=document.getElementsByClassName('box')
+                for(let i=0;i<3;i++){
+                     li[i].style.backgroundColor='#fff'
+                     icon.push(li[i].getElementsByClassName('icon'));
+                     font.push(li[i].getElementsByClassName('font'));
+                    // font = li[i].getElementsByClassName('font')
+                     for(let a=0;a<2;a++){
+                    //        for(let b=0;b<font.length;b++){
+                    //        font[b].style.color='black'
+                    //   }
+                       // console.log(icon[a])
+                        icon[i][a].style.color="blue"
+                     
+                        //  icon[i][a].style.color="blue"
+                     }
+                     for(let b=0;b<5;b++){
+                             font[i][b].style.color="black"
+                     }
+                   
+                }
+              li[index].style.backgroundColor='red';
+                 //console.log("asd",icon[2][1])
+                  console.log("1",icon[0][0])
+                          console.log("2",icon[0][1])
+                           console.log("3",icon[1][0])
+                            console.log("4",icon[1][1])
+                             console.log("5",icon[2][0])
+                              console.log("6",icon[2][1])
+               for(let a=0;a<2;a++){
+                    //        for(let b=0;b<font.length;b++){
+                    //        font[b].style.color='black'
+                    //   }
+                       // console.log(icon[a])
+                        icon[index][a].style.color="#fff"
+                       
+                        //  icon[i][a].style.color="blue"
+                     }
+                     for(let b=0;b<5;b++){
+                      font[index][b].style.color="#fff"
+                     }
                 },
         }
 }
@@ -83,7 +114,6 @@ export default {
 .box{
     width: 400px;
     height: 200px;
-    background-color:#fff;
     box-shadow: 0px 2px 3px rgb(21, 14, 14);
 }
  .boxchange{
@@ -96,7 +126,7 @@ export default {
     display: inline-block;
 }
 .left:first-of-type{
-       border-right: 1px solid #333437;
+       border-right: 1px solid #a2aed3;
 }
 .right{
     width: 165px;
@@ -108,6 +138,10 @@ li{
 }
 .fontchange{
     color: #fff;
+}
+.menu{
+    display: flex;
+    align-items: center;
 }
 .icon{
     font-size: 20px;
