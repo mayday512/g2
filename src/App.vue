@@ -7,8 +7,9 @@
       <br/>
       <muscle/>
       <br/>
-      <br/>
       <page/>
+      <br/>
+      <pie/>
       <!-- <nav> -->
         <!-- <RouterLink to="/">Home</RouterLink> -->
         <!-- <RouterLink to="/about">About</RouterLink> -->
@@ -23,6 +24,7 @@
 import HelloWorld from './components/line-Chart.vue'
 import muscle from './components/muscle.vue'
 import page from './components/Check-Page.vue'
+import pie from './components/Pie-Chart.vue'
 </script>
 
 <style scoped>

@@ -57,13 +57,6 @@ export default {
 }
 </script>
 <style scoped>
-.el-carousel__item h3 {
-  display: flex;
-  color: #475669;
-  opacity: 0.75;
-  line-height: 300px;
-  margin: 0;
-}
 .text{
     float:right;
     margin-right:30px;
@@ -106,7 +99,7 @@ export default {
     text-align: center;
     line-height: 50px;
     position:absolute;
-	top:20%;
+	  top:20%;
     left: 5%;
 }
 
@@ -118,8 +111,10 @@ export default {
   background-color: #d3dce6;
 }
 .car{
-    width: 1000px;
+    width: 1030px;
+    height: 300px;
     margin: 10px auto;
+    margin-bottom: 10px;
 }
 .el-carousel__arrow{
     background-color: rgb(203, 22, 22);
